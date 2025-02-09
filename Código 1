@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    int aposta, n1, n2, n3, n4, n5, n6, n7;
+    scanf("%d", &aposta);
+    scanf("%d %d %d %d %d %d %d", &n1, &n2, &n3, &n4, &n5, &n6, &n7);
+
+    int sorteio[] = {11, 29, 3, 45, 63, 20, 33};
+
+    int acertos = 0;
+    for (int i = 0; i < 7; i++) {
+        if (n1 == sorteio[i] || n2 == sorteio[i] || n3 == sorteio[i] ||
+            n4 == sorteio[i] || n5 == sorteio[i] || n6 == sorteio[i] || n7 == sorteio[i]) {
+            acertos++;
+        }
+    }
+
+    float lucro = 0.0;
+    if (acertos >= 3 && acertos <= 4) {
+        lucro = 1331.0 - aposta;
+    } else if (acertos >= 5 && acertos <= 6) {
+        lucro = 20736.0 - aposta;
+    } else if (acertos == 7) {
+        lucro = 100000.0 - aposta;
+    }
+
+    float xamaile = 0.6 * lucro;
+    float joao = 0.4 * lucro;
+
+    printf("Quantidade de acertos: %d\n", acertos);
+    
+    if (acertos <= 1) {
+        printf("Não obtém prêmio.\n");
+    } else {
+        printf("Lucro: %.2f\n", lucro);
+        printf("Valor de Xamaile: %.2f\n", xamaile);
+        printf("Valor de Joao Gabriel: %.2f\n", joao);
+    }
+
+    return 0;
+}
